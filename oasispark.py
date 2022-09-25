@@ -151,6 +151,42 @@ def updatecliente():
                        (nomecliente, sobrenomecliente, rgcliente, enderecocliente, cpfatendente, telefonecliente, cpfcliente))
         conn.commit()
     return render_template('alterarcliente.html')
+    
+@app.route('/selectatendente', methods=['POST', 'GET'])
+def selectatendente():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute('select CpfAtendente, NomeAtendente, SobrenomeAtendente, RgAtendente, EnderecoAtendente, SalarioAtendente, TelefoneAtendente from Atendente')
+    data = cursor.fetchall()
+    conn.commit()
+    return render_template('listaatendente.html',datas=data)
+
+@app.route('/selectcliente', methods=['POST', 'GET'])
+def selectcliente():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute('select CpfCliente, NomeCliente, SobrenomeCliente, RgCliente, EnderecoCliente, Cpfatendente, TelefoneCliente from Cliente')
+    data = cursor.fetchall()
+    conn.commit()
+    return render_template('listacliente.html',datas=data)
+
+@app.route('/selectmanobrista', methods=['POST', 'GET'])
+def selectmanobrista():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute('select CCnhManobrista, NomeManobrista, SobrenomeManobrista, RgManobrista, EnderecoManobrista, SalarioManobrista, TelefoneManobrista from Manobrista')
+    data = cursor.fetchall()
+    conn.commit()
+    return render_template('listamanobrista.html',datas=data)
+
+@app.route('/selectveiculo', methods=['POST', 'GET'])
+def selectveiculo():
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute('select Placa, Cor, Modelo, CpfCliente, NumeroVaga, DataHora_Entrada, DataHora_Saida, Valor, CpfAtendente, Comprovante from Veiculo')
+    data = cursor.fetchall()
+    conn.commit()
+    return render_template('listaveiculo.html',datas=data)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5005))
