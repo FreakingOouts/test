@@ -29,7 +29,7 @@ def gravar():
         conn.commit()
     return render_template('acframe.html')
 
-@app.route('listar', methods =['POST','GET'])
+@app.route('/listar', methods =['POST','GET'])
 def listar():
     conn = mysql.connect()
     cursor = conn.cursor()
