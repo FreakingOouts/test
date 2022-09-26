@@ -25,7 +25,7 @@ def gravar():
     if nome and preco and categoria:
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute('insert into tbl_produto (produto_nome, produto_preco, produto_categoria,) values (%s, %s, %s,)',(nome, preco, categoria,))
+        cursor.execute('insert into tbl_produto (produto_nome, produto_preco, produto_categoria,) VALUES (%s, %s, %s,)',(nome, preco, categoria,))
         conn.commit()
     return render_template('acframe.html')
 
