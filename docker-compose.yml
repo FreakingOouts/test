@@ -8,11 +8,11 @@ services:
     volumes:
       - .:/data
     ports:
-      - "5008:5008"
+      - "5005:5005"
 
   db:	
     image: mysql:5.7
     environment:
-        MYSQL_ROOT_PASSWORD: rgd596
+        MYSQL_ROOT_PASSWORD: 12345666
     ports:
       - "3309:3309"
