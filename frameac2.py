@@ -17,7 +17,7 @@ mysql.init_app(app)
 def main():
     return render_template('acframe.html')
 
-@app.route('/gravar', methods=['POST', 'GET'])
+@app.route('/gravar', methods=['POST','GET'])
 def gravar():
     nome = request.form['nome']
     preco = request.form['preco']
